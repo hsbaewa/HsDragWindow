@@ -39,6 +39,10 @@ public class HsDragWindowInflator {
     }
 
     public View inflate(int layout, ViewGroup viewGroup, int widthDP, int heightDP){
+        return inflate(layout, viewGroup, widthDP, heightDP, 0, 0);
+    }
+
+    public View inflate(int layout, ViewGroup viewGroup, int widthDP, int heightDP, int x, int y){
         final WindowManager windowManager = (WindowManager) getContext().getSystemService(WINDOW_SERVICE);
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -52,6 +56,10 @@ public class HsDragWindowInflator {
 
         params.width = getDP(getContext(), widthDP);
         params.height = getDP(getContext(), heightDP);
+
+
+        params.x = x;
+        params.y = y;
 
         windowManager.addView(view, params);
 
